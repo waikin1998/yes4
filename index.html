@@ -1,35 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HengOngBet Landing Page - 图层分离版本</title>
-    
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1446794863131362');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1446794863131362&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>YES2WIN</title>
     <style>
         * {
             margin: 0;
@@ -37,209 +11,222 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #000;
+        body, html {
+            width: 100vw;
             min-height: 100vh;
-            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://page.gensparksite.com/v1/base64_upload/17ea46483675f796ca933d9d7124d970');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #000;
             position: relative;
         }
 
-        /* Background Layer - z-index: 1 */
-        .background-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000;
-        }
-
-        .background-image {
-            width: 100%;
-            height: 100vh;
-            object-fit: contain;
-            max-width: 100%;
-        }
-
-        /* CTA Layer - z-index: 10 */
-        .cta-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 10;
-            pointer-events: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .premium-cta {
+        .cta-container {
             position: absolute;
-            top: 38%;
-            left: 35%;
+            bottom: 156px;
+            left: 50%;
             transform: translateX(-50%);
+            z-index: 1000;
+            animation: pulseScale 2.5s ease-in-out infinite;
+        }
+
+        .cta-button {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            background: none;
+            border: none;
             cursor: pointer;
-            pointer-events: all;
-            width: 360px;
-            height: 72px;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ffd700 50%, #ffaa00 75%, #ff8c00 100%);
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Layer 1 - 最外层金色边框 */
+        .layer-1 {
+            padding: 3px;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
             position: relative;
             overflow: hidden;
-            box-shadow: 
-                0 8px 32px rgba(255, 107, 53, 0.4),
-                0 4px 16px rgba(247, 147, 30, 0.3),
-                inset 0 2px 4px rgba(255, 255, 255, 0.3),
-                inset 0 -2px 4px rgba(0, 0, 0, 0.2);
-            border: 3px solid #ffd700;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: pulse-glow 2s ease-in-out infinite, breathe-scale 3s ease-in-out infinite;
         }
 
-        .premium-cta::before {
+        .layer-1::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
         }
 
-        .premium-cta:hover::before {
-            left: 100%;
+        /* Layer 2 - 深色边框 */
+        .layer-2 {
+            padding: 5px;
+            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+            border-radius: 12px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .premium-cta:hover {
-            transform: translateX(-50%) translateY(-8px) scale(1.05);
+        /* Layer 3 - 金色金属边框 */
+        .layer-3 {
+            padding: 2px;
+            background: linear-gradient(145deg, #FFD700, #B8860B, #FFD700);
+            border-radius: 8px;
             box-shadow: 
-                0 16px 48px rgba(255, 107, 53, 0.6),
-                0 8px 24px rgba(247, 147, 30, 0.4),
-                inset 0 2px 6px rgba(255, 255, 255, 0.4),
-                inset 0 -2px 6px rgba(0, 0, 0, 0.3);
-            border-color: #fff;
-        }
-
-        .cta-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            z-index: 2;
+                0 2px 8px rgba(255, 215, 0, 0.4),
+                inset 0 1px 2px rgba(255, 255, 255, 0.3);
             position: relative;
+            overflow: hidden;
         }
 
-        .cta-text {
-            font-size: 18px;
-            font-weight: 800;
+        .layer-3::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* Layer 4 - 金色渐变背景 */
+        .layer-4 {
+            padding: 16px 24px;
+            background: linear-gradient(145deg, #FFD700, #FFA500, #FF8C00, #B8860B);
+            border-radius: 6px;
+            box-shadow: 
+                inset 0 2px 4px rgba(255, 255, 255, 0.3),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Layer 5 - 金属光泽效果 */
+        .layer-4::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.3) 0%, 
+                transparent 30%, 
+                transparent 70%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            border-radius: 6px;
+        }
+
+        .layer-4::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 60%;
+            height: 30%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+
+        .button-text {
+            position: relative;
+            z-index: 10;
+            font-size: 20px;
+            font-weight: bold;
             color: #fff;
             text-shadow: 
-                2px 2px 4px rgba(0, 0, 0, 0.8),
-                0 0 8px rgba(255, 255, 255, 0.3);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+                0 1px 2px rgba(0, 0, 0, 0.5),
+                0 0 5px rgba(255, 215, 0, 0.3);
+            letter-spacing: 1px;
         }
 
-        .cta-icon {
-            font-size: 22px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            animation: bounce 2s ease-in-out infinite;
+        /* 悬停效果 */
+        .cta-button:hover .layer-1 {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            transform: scale(1.02);
         }
 
-        @keyframes pulse-glow {
-            0%, 100% {
-                box-shadow: 
-                    0 8px 32px rgba(255, 107, 53, 0.4),
-                    0 4px 16px rgba(247, 147, 30, 0.3),
-                    inset 0 2px 4px rgba(255, 255, 255, 0.3),
-                    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
-            }
-            50% {
-                box-shadow: 
-                    0 12px 40px rgba(255, 107, 53, 0.6),
-                    0 6px 20px rgba(247, 147, 30, 0.4),
-                    inset 0 2px 4px rgba(255, 255, 255, 0.4),
-                    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
-            }
+        .cta-button:hover .layer-4 {
+            background: linear-gradient(145deg, #FFED4A, #FFD700, #FFA500, #FF8C00);
         }
 
-        @keyframes breathe-scale {
-            0%, 100% {
-                transform: translateX(-50%) scale(1);
-            }
-            50% {
-                transform: translateX(-50%) scale(1.05);
-            }
+        .cta-button:hover .button-text {
+            text-shadow: 
+                0 1px 2px rgba(0, 0, 0, 0.5),
+                0 0 10px rgba(255, 215, 0, 0.5);
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-4px);
-            }
-            60% {
-                transform: translateY(-2px);
-            }
+        /* 点击效果 */
+        .cta-button:active {
+            transform: scale(0.98);
         }
 
-        /* Responsive adjustments */
+        /* 动画 */
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes pulseScale {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            .premium-cta {
-                width: 315px;
-                height: 63px;
-                top: 36%;
+            .cta-container {
+                bottom: 193px;
             }
-            .cta-text {
-                font-size: 16px;
+            
+            .layer-4 {
+                padding: 14px 20px;
             }
-            .cta-icon {
-                font-size: 20px;
+            
+            .button-text {
+                font-size: 18px;
             }
         }
 
         @media (max-width: 480px) {
-            .premium-cta {
-                width: 270px;
-                height: 58px;
-                top: 33%;
+            .layer-4 {
+                padding: 12px 18px;
             }
-            .cta-text {
-                font-size: 14px;
+            
+            .button-text {
+                font-size: 16px;
             }
-            .cta-icon {
-                font-size: 18px;
-            }
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <!-- Background Layer -->
-    <div class="background-layer">
-        <img src="https://page.gensparksite.com/v1/base64_upload/8f765d8125b627fb1d277897475a88c8" alt="HengOngBet Background" class="background-image">
-    </div>
-
-    <!-- CTA Layer -->
-    <div class="cta-layer">
-        <a href="https://t.ly/HOBADS07" target="_blank" class="premium-cta">
-            <div class="cta-content">
-                <i class="fas fa-gift cta-icon"></i>
-                <span class="cta-text">Claim Bonus Now</span>
-                <i class="fas fa-arrow-right cta-icon"></i>
-            </div>
+    <div class="cta-container">
+        <a href="https://yes2winofficial.com/" target="_blank" rel="noopener noreferrer">
+            <button class="cta-button">
+                <div class="layer-1">
+                    <div class="layer-2">
+                        <div class="layer-3">
+                            <div class="layer-4">
+                                <span class="button-text">🎁 领取 RM10 🎁</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </button>
         </a>
     </div>
 </body>
