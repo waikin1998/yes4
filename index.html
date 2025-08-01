@@ -8,30 +8,30 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
             min-height: 100vh;
-            background-image: url('https://page.gensparksite.com/v1/base64_upload/108f760e3d2b234165bf25cd5ce3ce61');
+            background: url('https://page.gensparksite.com/v1/base64_upload/108f760e3d2b234165bf25cd5ce3ce61') no-repeat center center;
             background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center top;
             background-color: #1a1a2e;
-            overflow-x: hidden;
-        }
-
-        .page-container {
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            position: relative;
+            overflow-x: hidden;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://page.gensparksite.com/v1/base64_upload/108f760e3d2b234165bf25cd5ce3ce61') no-repeat center center;
+            background-size: contain;
+            background-color: #1a1a2e;
+            z-index: -1;
         }
 
         .cta-container {
@@ -40,50 +40,104 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 189px; /* Desktop: move down 5cm */
+            padding: 20px;
         }
 
-        .cta-button {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 36px;
-            background: linear-gradient(135deg, #FFE135 0%, #FFA500 50%, #FF8C00 100%);
-            border: none;
-            border-radius: 15px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 15px;
-            font-weight: 800;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            min-width: 192px;
-            height: 42px;
-            
-            /* Multi-layer borders */
-            box-shadow: 
-                0 0 0 3px #2a2a2a,
-                0 0 0 5px #FFD700,
-                0 6px 15px rgba(0, 0, 0, 0.4),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3),
-                inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-            
-            /* 3D effect */
-            transform: perspective(1000px) rotateX(2deg);
-            
-            /* Breathing animation */
-            animation: breathe 3s ease-in-out infinite;
-        }
-
-        @keyframes breathe {
-            0%, 100% {
-                transform: perspective(1000px) rotateX(2deg) scale(1);
+        /* Desktop version - move down 5cm (189px) */
+        @media (min-width: 769px) {
+            .cta-container {
+                margin-top: 189px;
             }
-            50% {
-                transform: perspective(1000px) rotateX(2deg) scale(1.05);
+            
+            .cta-button {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 36px;
+                background: linear-gradient(135deg, #FFE135 0%, #FFA500 50%, #FF8C00 100%);
+                border: none;
+                border-radius: 9px;
+                font-family: 'Poppins', sans-serif;
+                font-size: 15px;
+                font-weight: 800;
+                color: white;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                min-width: 192px;
+                height: 42px;
+                
+                /* Multi-layer borders */
+                box-shadow: 
+                    0 0 0 2px #2a2a2a,
+                    0 0 0 4px #FFD700,
+                    0 5px 12px rgba(0, 0, 0, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+                
+                /* 3D effect */
+                transform: perspective(1000px) rotateX(2deg);
+                
+                /* Breathing animation */
+                animation: breathe 3s ease-in-out infinite;
+            }
+            
+            .gift-icon {
+                font-size: 17px;
+                margin: 0 7px;
+                animation: bounce 2s infinite;
+                filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+            }
+        }
+
+        /* Mobile version - increase size by 20% and move down 6cm (226px) */
+        @media (max-width: 768px) {
+            .cta-container {
+                margin-top: 226px;
+            }
+            
+            .cta-button {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 43px;
+                background: linear-gradient(135deg, #FFE135 0%, #FFA500 50%, #FF8C00 100%);
+                border: none;
+                border-radius: 11px;
+                font-family: 'Poppins', sans-serif;
+                font-size: 18px;
+                font-weight: 800;
+                color: white;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                min-width: 230px;
+                height: 50px;
+                
+                /* Multi-layer borders */
+                box-shadow: 
+                    0 0 0 3px #2a2a2a,
+                    0 0 0 5px #FFD700,
+                    0 6px 15px rgba(0, 0, 0, 0.4),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+                
+                /* 3D effect */
+                transform: perspective(1000px) rotateX(2deg);
+                
+                /* Breathing animation */
+                animation: breathe 3s ease-in-out infinite;
+            }
+            
+            .gift-icon {
+                font-size: 20px;
+                margin: 0 9px;
+                animation: bounce 2s infinite;
+                filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
             }
         }
 
@@ -95,39 +149,41 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
-            border-radius: 15px;
+            border-radius: inherit;
             pointer-events: none;
         }
 
         .cta-button:hover {
             transform: perspective(1000px) rotateX(2deg) translateY(-2px) scale(1.05);
-            box-shadow: 
-                0 0 0 3px #2a2a2a,
-                0 0 0 5px #FFD700,
-                0 0 20px rgba(255, 215, 0, 0.6),
-                0 8px 20px rgba(0, 0, 0, 0.5),
-                inset 0 2px 0 rgba(255, 255, 255, 0.4),
-                inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-            
             background: linear-gradient(135deg, #FFED4E 0%, #FFB500 50%, #FF9500 100%);
-            animation: none; /* Pause breathing on hover */
+        }
+
+        @media (min-width: 769px) {
+            .cta-button:hover {
+                box-shadow: 
+                    0 0 0 2px #2a2a2a,
+                    0 0 0 4px #FFD700,
+                    0 0 12px rgba(255, 215, 0, 0.6),
+                    0 7px 15px rgba(0, 0, 0, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cta-button:hover {
+                box-shadow: 
+                    0 0 0 3px #2a2a2a,
+                    0 0 0 5px #FFD700,
+                    0 0 15px rgba(255, 215, 0, 0.6),
+                    0 8px 18px rgba(0, 0, 0, 0.5),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+                    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+            }
         }
 
         .cta-button:active {
-            transform: perspective(1000px) rotateX(2deg) translateY(1px) scale(1.02);
-            box-shadow: 
-                0 0 0 3px #2a2a2a,
-                0 0 0 5px #FFD700,
-                0 3px 10px rgba(0, 0, 0, 0.3),
-                inset 0 2px 0 rgba(255, 255, 255, 0.2),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .gift-icon {
-            font-size: 20px;
-            margin: 0 8px;
-            animation: bounce 2s infinite;
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+            transform: perspective(1000px) rotateX(2deg) translateY(1px) scale(0.98);
         }
 
         .gift-icon:first-child {
@@ -143,10 +199,19 @@
                 transform: translateY(0);
             }
             40% {
-                transform: translateY(-6px);
+                transform: translateY(-8px);
             }
             60% {
-                transform: translateY(-3px);
+                transform: translateY(-4px);
+            }
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                transform: perspective(1000px) rotateX(2deg) scale(1);
+            }
+            50% {
+                transform: perspective(1000px) rotateX(2deg) scale(1.05);
             }
         }
 
@@ -156,71 +221,31 @@
             text-transform: uppercase;
             white-space: nowrap;
         }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            body {
-                background-size: cover;
-                background-position: center center;
-            }
-            
-            .cta-container {
-                margin-top: 151px; /* Mobile: move down 4cm */
-            }
-            
-            .cta-button {
-                min-width: 230px; /* 20% larger than 192px */
-                height: 50px; /* 20% larger than 42px */
-                font-size: 18px; /* 20% larger than 15px */
-                padding: 15px 45px;
-            }
-            
-            .gift-icon {
-                font-size: 24px; /* 20% larger than 20px */
-                margin: 0 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cta-button {
-                min-width: 220px;
-                height: 48px;
-                font-size: 16px;
-                padding: 12px 40px;
-            }
-            
-            .gift-icon {
-                font-size: 22px;
-                margin: 0 8px;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="page-container">
-        <div class="cta-container">
-            <a href="https://yes2winofficial.com/" target="_blank" class="cta-button" onclick="handleCTAClick(event)">
-                <span class="gift-icon">🎁</span>
-                <span class="button-text">Get RM10 Now</span>
-                <span class="gift-icon">🎁</span>
-            </a>
-        </div>
+    <div class="background-container"></div>
+    
+    <div class="cta-container">
+        <a href="https://yes2winofficial.com/" target="_blank" class="cta-button" onclick="handleCTAClick()">
+            <span class="gift-icon">🎁</span>
+            <span class="button-text">Get RM10 Now</span>
+            <span class="gift-icon">🎁</span>
+        </a>
     </div>
 
     <script>
-        function handleCTAClick(event) {
-            console.log('CTA button clicked - Get RM10 Now!');
+        function handleCTAClick() {
+            console.log('CTA button clicked - Redirecting to YES2WIN Official!');
             
-            // Add visual feedback
-            const button = event.currentTarget;
-            button.style.transform = 'perspective(1000px) rotateX(2deg) translateY(1px) scale(1.02)';
+            const button = document.querySelector('.cta-button');
+            button.style.transform = 'perspective(1000px) rotateX(2deg) translateY(1px) scale(0.98)';
             
             setTimeout(() => {
-                button.style.transform = '';
-            }, 200);
+                button.style.transform = 'perspective(1000px) rotateX(2deg) translateY(-2px) scale(1.05)';
+            }, 150);
         }
 
-        // Prevent breathing animation conflicts
         document.addEventListener('DOMContentLoaded', function() {
             const button = document.querySelector('.cta-button');
             
