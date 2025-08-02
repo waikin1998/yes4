@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YES2WIN</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1298969311600769');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1298969311600769&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <style>
         * {
             margin: 0;
@@ -42,6 +61,11 @@
             font-family: inherit;
             outline: none;
             transition: all 0.3s ease;
+        }
+
+        .cta-link {
+            text-decoration: none;
+            display: block;
         }
 
         /* Layer 1 - 最外层金色边框 */
@@ -169,16 +193,17 @@
             transform: scale(0.98);
         }
 
-        /* 动画 */
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
+        /* 放大放小动画 */
         @keyframes pulseScale {
             0% { transform: translateX(-50%) scale(1); }
             50% { transform: translateX(-50%) scale(1.1); }
             100% { transform: translateX(-50%) scale(1); }
+        }
+
+        /* Shimmer动画 */
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         /* 响应式设计 */
@@ -188,7 +213,7 @@
             }
             
             .layer-4 {
-                padding: 14px 20px;
+                padding: 13px 19px;
             }
             
             .button-text {
@@ -198,24 +223,18 @@
 
         @media (max-width: 480px) {
             .layer-4 {
-                padding: 12px 18px;
+                padding: 11px 16px;
             }
             
             .button-text {
                 font-size: 16px;
             }
         }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            display: inline-block;
-        }
     </style>
 </head>
 <body>
     <div class="cta-container">
-        <a href="https://yes2winofficial.com/" target="_blank" rel="noopener noreferrer">
+        <a href="https://yes2winofficial.com/" target="_blank" rel="noopener noreferrer" class="cta-link">
             <button class="cta-button">
                 <div class="layer-1">
                     <div class="layer-2">
@@ -229,5 +248,20 @@
             </button>
         </a>
     </div>
+
+    <script>
+        // 等待页面加载完成后添加点击追踪
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function() {
+                    // 追踪Contact事件
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Contact');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
